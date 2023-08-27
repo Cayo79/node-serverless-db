@@ -1,0 +1,21 @@
+service: node-serverless-db
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+
+custom:
+    serverless-offline:
+        httpPort: 3000
+
+functions:
+  api:
+    handler: index.handler
+    events:
+      - httpApi: '*'
+
+plugins:
+  - serverless-plugin-typescript
+  - serverless-offline
+  - serverless-dotenv-plugin
