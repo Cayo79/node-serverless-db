@@ -1,13 +1,11 @@
-import { Sequelize } from 'sequelize'
+import { Sequelize } from 'sequelize';
 
-const env = require('./env');
+import { env } from './env';
 
 export const db = new Sequelize(env.database, env.username, env.password, {
   host: env.host,
   port: env.port,
-  dialect: env.dialect,
-  //logging: false,
-
+  dialect: 'mysql',
   pool: {
     max: env.pool.max,
     min: env.pool.min,

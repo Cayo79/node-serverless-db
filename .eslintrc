@@ -1,0 +1,60 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "rules": {
+    "array-callback-return": "warn",
+    "camelcase": "warn",
+    "guard-for-in": "off",
+    "n/no-path-concat": "off",
+    "no-await-in-loop": "off",
+    "no-case-declarations": "off",
+    "no-console": "warn",
+    "no-continue": "off",
+    "no-control-regex": "warn",
+    "no-empty-pattern": "off",
+    "no-mixed-operators": "warn",
+    "no-param-reassign": "off",
+    "no-restricted-syntax": "off",
+    "no-throw-literal": "warn",
+    "no-underscore-dangle": "off",
+    "no-unsafe-optional-chaining": "warn",
+    "no-useless-escape": "warn",
+    "prefer-regex-literals": "off",
+    "promise/param-names": "off",
+    "array-bracket-spacing": ["warn", "always"],
+    "block-spacing": ["warn", "always"],
+    "comma-spacing": ["warn", { "before": false, "after": true }],
+    "func-call-spacing": ["warn", "never"],
+    "indent": ["warn", 2, { "SwitchCase": 1 }],
+    "keyword-spacing": ["warn", { "before": true, "after": true }],
+    "no-multi-spaces": "warn",
+    "object-curly-spacing": ["warn", "always"],
+    "semi": ["warn", "always"],
+    "space-before-blocks": "warn",
+    "space-infix-ops": "warn",
+    "spaced-comment": ["warn", "always", { "exceptions": ["*"] }],
+    "template-curly-spacing": ["warn", "always"],
+    "quotes": ["warn", "single", { "avoidEscape": true, "allowTemplateLiterals": true }],
+    "brace-style": ["warn", "1tbs", { "allowSingleLine": true }],
+    "eqeqeq": ["warn", "always"],
+    "no-lonely-if": "warn",
+    "no-multiple-empty-lines": ["warn", { "max": 1 }],
+    "no-trailing-spaces": "error",
+    "space-before-function-paren": ["warn", {
+      "anonymous": "never",
+      "named": "never",
+      "asyncArrow": "always"
+    }],
+    "curly": ["warn", "multi-line"],
+    "max-len": ["error", { "code": 100 }],
+    "@typescript-eslint/no-explicit-any": "off"
+  }
+}
