@@ -1,9 +1,11 @@
-import serverless = require('serverless-http');
+import serverless from 'serverless-http';
 import express, { Response, Request } from 'express';
 import { userRouter } from './src/routes/user.routes';
-import { db } from './src/instances/db.config';
+import dbInit from './src/instances/dbInit';
 
 const app = express();
+
+dbInit();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -16,9 +18,7 @@ app.get('/', (req: Request, res: Response) => {
 
 app.use('/usuarios', userRouter);
 
-app.listen(async function(err) {
-  await db.authenticate();
-  console.log('Database online------------------------');
+app.listen(function(err) {
   // eslint-disable-next-line no-console
   if (err) console.log('Error in server setup');
 });

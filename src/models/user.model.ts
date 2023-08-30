@@ -1,5 +1,5 @@
 import { DataTypes, Optional, Model } from 'sequelize';
-import { db } from '../instances/db.config';
+import db from '../instances/db.config';
 
 interface UserAttributes {
     id: number;
@@ -11,7 +11,7 @@ interface UserAttributes {
 export type UserInput = Optional<UserAttributes, 'id'>
 export type UserOuput = Required<UserAttributes>
 
-class UserModel extends Model<UserAttributes, UserInput> implements UserAttributes {
+class User extends Model<UserAttributes, UserInput> implements UserAttributes {
   public id!: number;
   public email: string;
   public password: string;
@@ -20,7 +20,7 @@ class UserModel extends Model<UserAttributes, UserInput> implements UserAttribut
   public readonly updatedAt!: Date;
 }
 
-export const User = UserModel.init(
+User.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -37,3 +37,5 @@ export const User = UserModel.init(
     paranoid: false,
   }
 );
+
+export default User;
