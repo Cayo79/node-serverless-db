@@ -9,6 +9,7 @@
     "moduleResolution": "node",
     "lib": ["es2015"],
     "rootDir": "./",
-    "noImplicitAny": false
+    "noImplicitAny": false,
+    "esModuleInterop": true
   }
 }

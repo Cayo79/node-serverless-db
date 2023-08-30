@@ -12,7 +12,7 @@ import { auth } from '../middleware/auth';
 
 export const userRouter = Router();
 
-userRouter.get('/', auth, getUsuarios);
+userRouter.get('/', getUsuarios);
 userRouter.get('/:id', getUsuario);
 userRouter.post('/', postUsuario);
 userRouter.post('/login', login);
