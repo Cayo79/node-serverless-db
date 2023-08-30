@@ -7,33 +7,33 @@ interface UserAttributes {
     password: string;
     createdAt?: Date;
     updatedAt?: Date;
-    deletedAt?: Date;
   }
 export type UserInput = Optional<UserAttributes, 'id'>
 export type UserOuput = Required<UserAttributes>
 
-class User extends Model<UserAttributes, UserInput> implements UserAttributes {
+class UserModel extends Model<UserAttributes, UserInput> implements UserAttributes {
   public id!: number;
   public email: string;
   public password: string;
   // timestamps!
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
-  public readonly deletedAt!: Date;
 }
 
-User.init({
-  id: {
-    type: DataTypes.INTEGER,
-    autoIncrement: true,
-    primaryKey: true
+export const User = UserModel.init(
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
+    },
+    email: DataTypes.STRING,
+    password: DataTypes.STRING,
   },
-  email: DataTypes.STRING,
-  password: DataTypes.STRING
-}, {
-  timestamps: true,
-  sequelize: db,
-  paranoid: true
-});
-
-export default User;
+  {
+    timestamps: true,
+    sequelize: db,
+    tableName: 'users',
+    paranoid: false,
+  }
+);

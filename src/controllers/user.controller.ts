@@ -1,5 +1,5 @@
-import { Request, Response } from 'express';
-import User, { UserInput } from '../models/user.model';
+import { NextFunction, Request, Response } from 'express';
+import { UserInput, User, UserOuput } from '../models/user.model';
 import * as Sequelize from 'sequelize';
 import * as bcrypt from 'bcrypt';
 import * as jwt from 'jsonwebtoken';
@@ -27,10 +27,15 @@ async function comparePasswd(password, hash) {
     });
 }
 
-export const getUsuarios = (req: Request, res: Response) => {
-  User.findAll().then(sal => {
-    res.send(sal);
-  });
+export const getUsuarios = async (req: Request, res: Response, next: NextFunction)
+: Promise<UserOuput[]> => {
+  try {
+    const r: UserOuput[] = await User.findAll({});
+    return r;
+  } catch (e) {
+    console.error('Error fetching users:', e);
+    throw e; // Lanza el error en el bloque 'catch'
+  }
 };
 
 export const getUsuario = (req: Request, res: Response) => {

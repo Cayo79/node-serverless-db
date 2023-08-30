@@ -5,16 +5,6 @@ import { db } from './src/instances/db.config';
 
 const app = express();
 
-(async () => {
-  try {
-    await db.authenticate();
-    // eslint-disable-next-line no-console
-    console.log('Database online');
-  } catch (error) {
-    throw new Error( error);
-  }
-});
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -26,7 +16,9 @@ app.get('/', (req: Request, res: Response) => {
 
 app.use('/usuarios', userRouter);
 
-app.listen(function(err) {
+app.listen(async function(err) {
+  await db.authenticate();
+  console.log('Database online------------------------');
   // eslint-disable-next-line no-console
   if (err) console.log('Error in server setup');
 });
