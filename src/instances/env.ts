@@ -3,7 +3,7 @@ export const env = {
   username: process.env.USERNAME_DB || '',
   password: process.env.PASSWORD_DB || '',
   host: process.env.HOST || '',
-  port: Number(process.env.BD_PORT) || 4000,
+  port: Number(process.env.BD_PORT) || 3306,
   dialect: 'mysql',
   pool: {
     max: 5,
