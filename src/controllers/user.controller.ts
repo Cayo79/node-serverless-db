@@ -32,7 +32,7 @@ export const getUsuarios = async (req: Request, res: Response) => {
     const users : UserOuput[] | null = await User.findAll();
     return res.status(200).json(users);
   } catch (e) {
-    throw e.message; // Lanza el error en el bloque 'catch'
+    throw e.message;
   }
 };
 

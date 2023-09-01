@@ -8,7 +8,7 @@ import {
   putClave,
   login
 } from '../controllers/user.controller';
-import { auth } from '../middleware/auth';
+import auth from '../middleware/auth';
 
 export const userRouter = Router();
 
