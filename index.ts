@@ -1,31 +1,26 @@
-const serverless = require("serverless-http");
-const express = require("express");
-import * as bodyParser from 'body-parser'
-import { userRouter } from './src/routes/user.routes'
-import { db } from './src/instances/db.config'
+import serverless from 'serverless-http';
+import express, { Response, Request } from 'express';
+import { userRouter } from './src/routes/user.routes';
+import dbInit from './src/instances/dbInit';
 
 const app = express();
 
-try {
-  db.authenticate()
-  console.log('Database online')
-} catch (error) {
-  throw new Error( error)
-}
+dbInit();
 
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-app.get("/", (req, res, next) => {
+app.get('/', (req: Request, res: Response) => {
   return res.status(200).json({
-    message: "Hola from root!",
+    message: 'Hola from root!',
   });
 });
 
-app.use("/usuarios", userRouter)
+app.use('/usuarios', userRouter);
 
 app.listen(function(err) {
-  if (err) console.log("Error in server setup")
-})
+  // eslint-disable-next-line no-console
+  if (err) console.log('Error in server setup');
+});
 
 module.exports.handler = serverless(app);

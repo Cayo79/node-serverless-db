@@ -1,0 +1,8 @@
+
+/coverage/
+/dist
+/docker
+*.es5.js
+node_modules/**
+**/node_modules/**
+/modules
